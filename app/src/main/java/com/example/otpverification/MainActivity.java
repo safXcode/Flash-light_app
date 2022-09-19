@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         final String[] cameraId = {null};
+        getSupportActionBar().hide();
 
         binding.buttonLaBava.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -30,8 +31,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(binding.buttonLaBava.getText().toString().equals("Turn On")){
 
+//                     change the image and text on the button
                     binding.imageLaBava.setImageResource(R.drawable.flashon);
-                    binding.buttonLaBava.setText("Turn Off");if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    binding.buttonLaBava.setText("Turn Off");
+
+//                     to turn on the flash light
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                          camManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
 
                         try {
@@ -41,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
-
-
                 }else{
                     binding.imageLaBava.setImageResource(R.drawable.flashoff);
                     binding.buttonLaBava.setText("Turn On");
